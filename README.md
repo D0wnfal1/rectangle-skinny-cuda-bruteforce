@@ -49,8 +49,7 @@ The code accompanies my B.Sc. thesis *"CUDA-Based Hardware–Software System for
 .
 ├── README.md
 ├── LICENSE
-├── docs/
-│   └── thesis.pdf                      # full thesis (Ukrainian)
+├── .gitignore
 └── src/
     ├── rectangle/
     │   ├── cpu/
@@ -90,7 +89,7 @@ For the benchmark numbers above, an additional `-maxrregcount=<N>` register limi
 ## Usage
 
 - `rectangle_VL_bitslice_gpu` and `skinny_VL_bitslice_gpu` ask for an operation mode:
-  1. **KAT verification mode.** Encrypts an all-zero plaintext under a known key, then searches a small key range and must recover that key. The printed ciphertext can be compared with the reference vectors in Table 4.1 of the thesis.
+  1. **KAT verification mode.** Encrypts an all-zero plaintext under a known key, then searches a small key range and must recover that key. The program also prints the ciphertext of this test case, which can be cross-checked against an independent implementation.
   2. **Benchmark mode.** Scans the full benchmark range and prints the elapsed time and throughput as `2^x keys/sec`.
 - The other programs run the benchmark directly.
 - The size of the scanned key range is set by the `power` constant in each `main()` (range = 2^power keys). Most programs scan 2^32 keys in benchmark mode; `rectangle_bitslice_cpu.c` and `rectangle_naive_gpu.cu` are set to 2^16 keys by default.
